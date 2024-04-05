@@ -8,7 +8,7 @@
   
   **ls -a** Con archivos ocultos
 
-![Imagen1](/Imagenes/Practica0.1.png)
+![Imagen1](/Practica%200/Imagenes/Practica0.1.png)
 
 - ### 1.2 Crear un folder
   **mkdir** Practica0
