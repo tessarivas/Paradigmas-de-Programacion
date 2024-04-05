@@ -1,4 +1,4 @@
-# **REPORTE DE PRÁCTICA 1**
+# **REPORTE DE PRÁCTICA 0**
 # *Introducción a Git*
 ## 1. Iniciar en Git Bash
 - ### 1.1 Ubicarte en tu usuario
