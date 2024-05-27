@@ -389,3 +389,309 @@ true ?
 yes
 
 | ?-
+
+## - Conjunciones y disyunciones -
+**Conjunción** = Se puede implementar utilizando el operador coma (,). Entonces, dos predicados separados por coma se unen con la declaración AND.
+
+**Ejemplo:**
+Supongamos que tenemos un predicado, parent(jhon, bob) , que significa "Jhon es padre de Bob", y otro predicado, male(jhon) , que significa "Jhon es hombre". Entonces podemos hacer otro predicado que sea padre (jhon,bob) , que significa "Jhon es padre de Bob". Podemos definir el predicado padre cuando es padre Y es hombre.
+
+**Disyunción** = Se puede implementar utilizando el operador de punto y coma (;). Entonces, dos predicados separados por punto y coma se unen con una declaración OR. 
+
+**Ejemplo:**
+upongamos que tenemos un predicado, padre(jhon, bob) . Este dice que “Jhon es padre de Bob”, y otro predicado, madre(lili,bob) , este dice que “lili es madre de bob”. Si creamos otro predicado como child() , esto será cierto cuando padre(jhon, bob) sea verdadero O madre(lili,bob) sea verdadero.
+
+**Programa**
+
+parent(jhon,bob).
+
+parent(lili,bob).
+
+male(jhon).
+
+female(lili).
+
+% Conjunction Logic
+
+father(X,Y) :- parent(X,Y),male(X).
+
+mother(X,Y) :- parent(X,Y),female(X).
+
+% Disjunction Logic
+
+child_of(X,Y) :- father(X,Y);mother(X,Y).
+
+
+**Producción**
+| ?- [conj_disj].
+
+compiling D:/TP Prolog/Sample_Codes/conj_disj.pl for byte code...
+D:/TP Prolog/Sample_Codes/conj_disj.pl compiled, 11 lines read - 1513 bytes written, 24 ms
+
+yes
+
+| ?- father(jhon,bob).
+
+yes
+
+| ?- child_of(jhon,bob).
+
+true ?
+
+yes
+
+| ?- child_of(lili,bob).
+
+yes
+
+| ?-
+
+## - Listas -
+**Listas** = Es una**estructura de datos simple que se usa ampliamente en programación no numérica.** La lista consta de cualquier número de elementos, por ejemplo, rojo, verde, azul, blanco y oscuro. Se representará como [rojo, verde, azul, blanco, oscuro]. La lista de elementos irá entre corchetes. Una lista puede estar vacía o no vacía.
+
+### Operaciones básicas en listas
+**Operaciones	y su Definición:**
+1. Comprobación de membresía: *Durante esta operación, podemos verificar si un elemento eterminado es miembro de una lista especificada o no.*
+2. Cálculo de longitud: *Con esta operación podemos encontrar la longitud de una lista.*
+3. Concatenación: *La concatenación es una operación que se utiliza para unir/agregar dos listas.*
+4. Eliminar objetos: *Esta operación elimina el elemento especificado de una lista.*
+5. Agregar elementos: *La operación de agregar agrega una lista a otra (como un elemento).*
+6. Insertar elementos: *Esta operación inserta un elemento determinado en una lista.*
+
+**Operaciones de reposicionamiento y su Definición:**
+1. Permutación: *Esta operación cambiará las posiciones de los elementos de la lista y generará todos los resultados posibles.*
+2. Artículos inversos: *Esta operación organiza los elementos de una lista en orden inverso.*
+3. Elementos de turno: *Esta operación desplazará un elemento de una lista hacia la izquierda de forma rotatoria.*
+4. Encargar artículos: *Esta operación verifica si la lista dada está ordenada o no.*
+
+**Operaciones varias	Definición:**
+1. Hallazgo de longitudes pares e impares: *Verifica si la lista tiene un número par o impar de elementos.*
+2. Dividir: *Divide una lista en dos listas, y estas listas tienen aproximadamente la misma longitud.*
+3. máx.: *Recupera el elemento con valor máximo de la lista dada.*
+4. Suma: *Devuelve la suma de elementos de la lista dada.*
+5. Combinar ordenar: *Organiza los elementos de una lista determinada en orden (utilizando el algoritmo Merge Sort).*
+
+## - Recursión y Estructuras -
+**Recursividad** = Es una técnica en la que un predicado se utiliza a sí mismo (puede ser con otros predicados) para encontrar el valor de verdad.
+
+**Estructuras** = Son objetos de datos que contienen múltiples componentes.
+
+**Coincidencia** = Se utiliza para comprobar si dos términos dados son iguales (idénticos) o si las variables en ambos términos pueden tener los mismos objetos después de crear una instancia.
+
+## - Retroceso -
+**Retroceso** = Es un procedimiento en el que el prólogo busca el valor de verdad de diferentes predicados comprobando si son correctos o no. El término retroceso es bastante común en el diseño de algoritmos y en diferentes entornos de programación.
+
+### ¿Cómo funciona el retroceso?
+**Nota** : mientras ejecutamos algún código de prólogo, durante el retroceso puede haber varias respuestas, podemos presionar punto y coma (;) para obtener las siguientes respuestas una por una, lo que ayuda a retroceder. De lo contrario, cuando obtengamos un resultado, se detendrá.
+
+### Prevenir el retroceso
+A veces escribimos los mismos predicados más de una vez cuando nuestro programa lo exige, por ejemplo para escribir reglas recursivas o para realizar algunos sistemas de toma de decisiones. En tales casos, el retroceso incontrolado puede causar ineficiencia en un programa. Para resolver esto, se usa `cut` en Prolog.
+
+## - Diferente o no -
+El predicado diferente comprobará si dos argumentos dados son iguales o no. **Si son iguales, devolverá falso**; de lo contrario, devolverá verdadero. El predicado `not` se usa para negar alguna afirmación, lo que significa que, **cuando una afirmación es verdadera, entonces not(declaración) será falsa**; de lo contrario, si la afirmación es falsa, entonces not(declaración) será verdadera.
+
+La relación not es muy útil en diferentes casos. También en nuestros lenguajes de programación tradicionales utilizamos la operación lógica not para negar alguna declaración. Entonces **significa que cuando una afirmación es verdadera, entonces no (declaración) será falsa; de lo contrario, si la afirmación es falsa, entonces no (declaración) será verdadera**.
+
+## - Entradas y Salidas -
+### El predicado write()
+Para escribir la salida podemos usar el predicado `write()`. Este predicado **toma el parámetro como entrada y escribe el contenido en la consola de forma predeterminada**. `write()` también puede escribir en archivos. 
+
+**Programa**
+
+| ?- write(56).
+
+56
+
+yes
+
+| ?- write('hello').
+
+hello
+
+yes
+
+| ?- write('hello'),nl,write('world').
+
+hello
+
+world
+
+yes
+
+| ?- write("ABCDE")
+
+.
+
+[65,66,67,68,69]
+
+yes
+
+### El predicado read()
+El predicado `read()` se utiliza para leer desde la consola. El usuario puede escribir algo en la consola, que puede tomarse como entrada y procesarlo. `read()` **se usa generalmente para leer desde la consola, pero también se puede usar para leer desde archivos**.
+
+**Programa**
+cube :-
+
+   write('Write a number: '),
+
+   read(Number),
+
+   process(Number).
+
+process(stop) :- !.
+
+process(Number) :-
+
+   C is Number * Number * Number,
+
+   write('Cube of '),write(Number),write(': '),write(C),nl, cube.
+
+### El predicado tab()
+El `tab()` es un **predicado adicional que se puede usar para poner algunos espacios en blanco mientras escribimos algo**. Entonces toma un número como argumento e imprime esa cantidad de espacios en blanco.
+
+**Programa**
+
+| ?- write('hello'),tab(15),write('world').
+
+hello          world
+
+yes
+
+| ?- write('We'),tab(5),write('will'),tab(5),write('use'),tab(5),write('tabs').
+
+We    will  use   tabs
+
+yes
+
+| ?-
+
+### El predicado tell()
+Este predicado `tell()` **toma el nombre del archivo como argumento**. Si ese archivo no está presente, cree un archivo nuevo y escriba en él. Ese archivo se abrirá hasta que escribamos el comando dicho . Podemos abrir más de un archivo usando `tell()`. Cuando se llame, se cerrarán todos los archivos.
+
+### El predicado see()
+**Cuando queremos leer desde un archivo, no desde el teclado, tenemos que cambiar el flujo de entrada actual**. Entonces podemos usar el predicado `see()`. Esto tomará el nombre del archivo como entrada. Cuando se complete la operación de lectura, usaremos el comando visto. 
+
+**Producción**
+
+| ?- see('sample_predicate.txt'),
+
+read(X),
+
+read(Y),
+
+seen,
+
+read(Z).
+
+the_end.
+
+X = end_of_file
+
+Y = end_of_file
+
+Z = the_end
+
+yes
+
+| ?-
+
+### Los predicados put(C) y put_char(C)
+Podemos usar `put(C)` **para escribir un carácter a la vez en el flujo de salida actual**. El flujo de salida puede ser un archivo o la consola. Esta C puede ser un carácter o un código ASCII en otra versión de Prolog como SWI prolog, pero en GNU prolog solo admite el valor ASCII. Para usar el carácter en lugar de ASCII, podemos usar `put_char(C)`.
+
+### Los predicados get_char(C) y get_code(C)
+Para leer un solo carácter del flujo de entrada actual, podemos usar el predicado `get_char(C)`. Esto tomará el personaje. si queremos el código ASCII, podemos usar `get_code(C)`.
+
+## - Predicados integrados -
+Hay tres tipos de predicados integrados, como se indica a continuación:
+1. Identificar términos
+2. Estructuras en descomposición
+3. Recopilando todas las soluciones
+
+### Identificar términos
+**Predicado y su Descripción:**
+var(X): *tiene éxito si X es actualmente una variable sin instancias.*
+nueva(X): *tiene éxito si X no es una variable o ya se ha creado una instancia.*
+átomo(X): *es cierto si X actualmente representa un átomo.*
+número(X): *es cierto si X actualmente representa un número.*
+entero(X): *es cierto si X actualmente representa un número entero.*
+flotador(X): *es cierto si X actualmente representa un número real.*
+atómico(X): *es cierto si X actualmente representa un número o un átomo.*
+compuesto(X): *es cierto si X actualmente representa una estructura.*
+tierra(X): *tiene éxito si X no contiene ninguna variable no instanciada.*
+
+### Predicados matemáticos
+**Predicado y su Descripción:**
+aleatorio(L,H,X): *Obtener valor aleatorio entre L y H.*
+entre(L,H,X): *Obtener todos los valores entre L y H.*
+éxito(X,Y): *Suma 1 y asígnalo a X.*
+abs(X): *Obtener el valor absoluto de X.*
+máx(X,Y): *Obtener el valor más grande entre X e Y.*
+mín(X,Y): *Obtener el valor más pequeño entre X e Y.*
+redondo(X): *Redondear un valor cercano a X.*
+truncar(X): *Convierta flotante a entero, elimine la parte fraccionaria.*
+piso(X): *Redondear a la baja.*
+techo(X): *Redondeo.*
+raíz cuadrada (X): *Raíz cuadrada.*
+
+## - Estructura de datos de árbol (estudio de caso) -
+Supongamos que tenemos un árbol como se muestra a continuación:
+![Arbol](https://www.tutorialspoint.com/prolog/images/tree_data_structure.jpg)
+
+Tenemos que implementar este árbol usando prolog. Tenemos algunas operaciones de la siguiente manera:
+
+- op(500, xfx, 'is_parent').
+- op(500, xfx, 'es_hermano_de').
+- op(500, xfx, 'está_en_el_mismo_nivel').
+- Y otro predicado es leaf_node(Node)
+
+En estos operadores, ha visto algunos parámetros como `(500, xfx, <nombre_operador>)`. El primer argumento (aquí 500) es la prioridad de ese operador. 'xfx' indica que se trata de un operador binario y `<operator_name>` es el nombre del operador.
+
+Estos operadores se pueden utilizar para definir la base de datos del árbol. Podemos usar estos operadores de la siguiente manera:
+
+- **a `es_parent b`, o `is_parent(a, b)`**. Entonces esto indica que el nodo a es el padre del nodo b.
+- **X `es_hermano_de Y` o `es_hermano_de(X,Y)`**. Esto indica que X es hermano del nodo Y. Entonces, la regla es que si otro nodo Z es padre de X y Z también es padre de Y y X e Y son diferentes, entonces X e Y son hermanos.
+- **`leaf_node(Nodo)`**. Se dice que un nodo (Nodo) es un nodo hoja cuando un nodo no tiene hijos.
+- **`X está_en_el_mismo_nivel Y`, o `está_en_el_mismo_nivel(X,Y)`**. Esto comprobará si X e Y están al mismo nivel o no. Entonces, la condición es que cuando X e Y son iguales, entonces devuelve verdadero; de lo contrario, W es el padre de X, Z es el padre de Y y W y Z están en el mismo nivel.
+
+**Programa**
+
+/* The tree database */
+
+:- op(500,xfx,'is_parent').
+
+a is_parent b. c is_parent g. f is_parent l. j is_parent q.
+
+a is_parent c. c is_parent h. f is_parent m. j is_parent r.
+
+a is_parent d. c is_parent i. h is_parent n. j is_parent s.
+
+b is_parent e. d is_parent j. i is_parent o. m is_parent t.
+
+b is_parent f. e is_parent k. i is_parent p. n is_parent u.
+
+n 
+is_parent v.
+
+/* X and Y are siblings i.e. child from the same parent */
+
+:- op(500,xfx,'is_sibling_of').
+
+X is_sibling_of Y :- Z is_parent X,
+
+                     Z is_parent Y,
+
+                     X \== Y.
+
+leaf_node(Node) :- \+ is_parent(Node,Child). % Node grounded
+
+/* X and Y are on the same level in the tree. */
+
+:-op(500,xfx,'is_at_same_level').
+
+X is_at_same_level X .
+
+X is_at_same_level Y :- W is_parent X,
+
+                        Z is_parent Y,
+
+                        W is_at_same_level Z.
